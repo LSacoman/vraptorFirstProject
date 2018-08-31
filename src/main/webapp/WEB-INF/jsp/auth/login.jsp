@@ -17,7 +17,7 @@
             <c:forEach items="${errors}" var="err">
             <li>${err.category} ${err.message}</li>
             </c:forEach>
-        </c:if>
+        </c:if> 
     <form action="<c:url value="/auth/entrar" />" method="POST">
         <div>
             <label>Usuario:</label>
@@ -31,8 +31,8 @@
             <button type="submit">Gravar</button>
         </div>
     </form>
-            
-            
+
+
     <h1>Auth (Register)</h1>
     <c:if test="${not empty errors}">
         <c:forEach items="${errors}" var="err">

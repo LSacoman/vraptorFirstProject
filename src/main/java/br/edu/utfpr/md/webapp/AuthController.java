@@ -6,7 +6,6 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.edu.utfpr.md.model.Usuario;
 import javax.inject.Inject;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 @Controller
 public class AuthController {
@@ -20,18 +19,21 @@ public class AuthController {
     public void login() { // CARREGA PAGINA DE LOGIN
     }
 
-    public void entrar(@Valid @NotNull Usuario user) { // EFETUA LOGIN DO USUARIO
-        validator.onErrorForwardTo(this).login();
+    public void entrar(@Valid Usuario usuario) { // EFETUA LOGIN DO USUARIO
         
-        System.out.println(user.getUsuario());
-        System.out.println(user.getSenha());
+        
+        System.out.println(usuario.getUsuario());
+        System.out.println(usuario.getSenha());
+        validator.onErrorForwardTo(this).login();
         //result.redirectTo("carro/form");
+        
     }
 
-    public void registrar(@Valid Usuario user) { //EFETUA CADASTRO DO USUARIO
+    public void registrar(@Valid Usuario usuario) { //EFETUA CADASTRO DO USUARIO
+        
+        System.out.println(usuario.getUsuario());
+        System.out.println(usuario.getSenha());
         validator.onErrorForwardTo(this).login();
-        System.out.println(user.getUsuario());
-        System.out.println(user.getSenha());
         result.redirectTo(this).login();
     }
 
