@@ -19,7 +19,7 @@
             <li>${err.category} ${err.message}</li>
             </c:forEach>
         </c:if>
-    <form action="<c:url value="/carro/save" />" method="POST">
+            <form action="${linkTo[CarroController].save}" method="POST">
         <div>
             <label>Marca:</label>
             <input type="text" name="carro.marca"/>

@@ -18,7 +18,7 @@
             <li>${err.category} ${err.message}</li>
             </c:forEach>
         </c:if> 
-    <form action="<c:url value="/auth/entrar" />" method="POST">
+    <form action="${linkTo[AuthController].entrar}" method="POST">
         <div>
             <label>Usuario:</label>
             <input type="text" name="usuario.usuario"/>
@@ -39,7 +39,7 @@
             <li>${err.category} ${err.message}</li>
             </c:forEach>
         </c:if>
-    <form action="<c:url value="/auth/registrar" />" method="POST">
+    <form action="${linkTo[AuthController].registrar}" method="POST">
         <div>
             <label>Nome:</label>
             <input type="text" name="usuario.nome"/>
