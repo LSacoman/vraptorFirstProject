@@ -13,6 +13,9 @@ public class Usuario {
     @Size(min = 6)
     private String senha;
 
+    public Usuario() {
+    }
+
     public Usuario(String usuario, String senha) {
         this.usuario = usuario;
         this.senha = senha;

@@ -5,30 +5,25 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Auth (login)!</h1>
-        <c:if test="${not empty errors}">
-            <c:forEach items="${errors}" var="err">
+<c:import url="/WEB-INF/jsp/inc/header.jsp"/>
+<div class="col-md-6 offset-md-3">
+    <h1>Auth (login)!</h1>
+    <c:if test="${not empty errors}">
+        <c:forEach items="${errors}" var="err">
             <li>${err.category} ${err.message}</li>
             </c:forEach>
         </c:if> 
-    <form action="${linkTo[AuthController].entrar}" method="POST">
-        <div>
+    <form action="${linkTo[AuthController].autenticar}" method="POST">
+        <div class="form-group">
             <label>Usuario:</label>
-            <input type="text" name="usuario.usuario"/>
+            <input type="text" class="form-control" name="usuario.usuario"/>
         </div>
-        <div>
+        <div class="form-group">
             <label>Senha:</label>
-            <input type="text" name="usuario.senha"/>
+            <input type="password" class="form-control" name="usuario.senha"/>
         </div>
-        <div>
-            <button type="submit">Gravar</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Gravar</button>
         </div>
     </form>
 
@@ -40,21 +35,21 @@
             </c:forEach>
         </c:if>
     <form action="${linkTo[AuthController].registrar}" method="POST">
-        <div>
+        <div class="form-group">
             <label>Nome:</label>
-            <input type="text" name="usuario.nome"/>
+            <input type="text" class="form-control" name="usuario.nome"/>
         </div>
-        <div>
+        <div class="form-group">
             <label>Usuario:</label>
-            <input type="text" name="usuario.usuario"/>
+            <input type="text" class="form-control" name="usuario.usuario"/>
         </div>
-        <div>
+        <div class="form-group">
             <label>Senha:</label>
-            <input type="text" name="usuario.senha"/>
+            <input type="text" class="form-control" name="usuario.senha"/>
         </div>
-        <div>
-            <button type="submit">registrar</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">registrar</button>
         </div>
     </form>
-</body>
-</html>
+</div>
+<c:import url="/WEB-INF/jsp/inc/footer.jsp"/>

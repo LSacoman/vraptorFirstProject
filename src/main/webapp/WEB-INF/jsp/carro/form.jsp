@@ -6,31 +6,27 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Carro (Cadastro)</h1>
-        <c:if test="${not empty errors}">
-            <c:forEach items="${errors}" var="err">
+<c:import url="/WEB-INF/jsp/inc/header.jsp"/>
+<div class="col-md-6 offset-md-3">
+    <h1>Carro (Cadastro)</h1>
+    <c:if test="${not empty errors}">
+        <c:forEach items="${errors}" var="err">
             <li>${err.category} ${err.message}</li>
             </c:forEach>
         </c:if>
-            <form action="${linkTo[CarroController].save}" method="POST">
-        <div>
+
+    <form action="${linkTo[CarroController].save}" method="POST">
+        <div class="form-group">
             <label>Marca:</label>
-            <input type="text" name="carro.marca"/>
+            <input type="text" class="form-control" name="carro.marca"/>
         </div>
-        <div>
+        <div class="form-group">
             <label>Modelo:</label>
-            <input type="text" name="carro.modelo"/>
+            <input type="text" class="form-control" name="carro.modelo"/>
         </div>
         <div>
-            <button type="submit">Gravar</button>
+            <button type="submit" class="btn btn-primary">Gravar</button>
         </div>
     </form>
-</body>
-</html>
+</div>
+<c:import url="/WEB-INF/jsp/inc/footer.jsp"/>
