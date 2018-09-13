@@ -5,8 +5,10 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.edu.utfpr.md.model.Carro;
+import br.edu.utfpr.md.webapp.dao.CarroDAO;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,9 @@ public class CarroController {
 
     @Inject
     private Validator validator;
+
+    @Inject
+    private CarroDAO carroDAO;
 
     public void teste() {
         System.out.println("TESTE");
@@ -51,19 +56,12 @@ public class CarroController {
     @Post
     public void save(@Valid @NotNull Carro carro) {
         validator.onErrorForwardTo(this).form();
-        System.out.println(carro.getMarca());
-        System.out.println(carro.getModelo());
-        /* MODO MANUAL DE VALIDAÇÃO
-        if(carro.getMarca() == null || carro.getMarca().isEmpty()){
-            validator.add(new SimpleMessage("carro.marca", "Marca é invalida!"));
+        try {
+            this.carroDAO.insert(carro);
+        } catch (Exception e) {
+            e.printStackTrace();
+            validator.add(new SimpleMessage("dao", "Falha ao Inserir Carro!"));
         }
-        if(carro.getModelo()== null || carro.getModelo().isEmpty()){
-            validator.add(new SimpleMessage("carro.modelo", "Modelo é invalido!"));
-        }
-         */
-
-        // SALVAR NA BASE DE DADOS
-        // REDIRECIONAR
         result.redirectTo(this).list();
     }
 }
